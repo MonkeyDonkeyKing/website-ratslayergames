@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Placeholder from '../components/Placeholder.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Placeholder />
   </main>
 </template>
