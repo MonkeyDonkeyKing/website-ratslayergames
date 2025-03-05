@@ -157,7 +157,7 @@ onMounted(() => {
       <h1 class="title">RatSlayerGames</h1>
       <p>Coming soon...</p>
     </div>
-    <img v-if="isMouseIdle" class="rat" :src="ratHasCoin ? 'src/assets/rat2.png' : 'src/assets/rat1.png'"
+    <img v-if="isMouseIdle" class="rat" :src="ratHasCoin ? '/assets/rat2.png' : '/assets/rat1.png'"
       :style="{ left: `${ratPosition.x}px`, top: `${ratPosition.y}px` }" />
     <canvas id="rainCanvas"></canvas>
   </section>
