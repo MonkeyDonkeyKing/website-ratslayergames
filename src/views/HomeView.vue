@@ -3,7 +3,17 @@ import { ref } from 'vue'
 import SiteHeader from '../components/SiteHeader.vue'
 import { useReveal } from '../composables/useReveal'
 import { useRat } from '../composables/useRat'
-const keyArtWide = '/assets/dnd-key-art-wide.png'
+const keyArt = '/assets/dnd-main-capsule.png'
+
+const screenshots = [
+  { src: '/assets/screenshots/01-road-hold-the-ground.png', alt: 'The party holds the ground against attackers on a torchlit road.' },
+  { src: '/assets/screenshots/02-forest-cultist-ambush.png', alt: 'A cultist ambush in the forest, projectiles crossing the clearing.' },
+  { src: '/assets/screenshots/03-cavern-ritual-fight.png', alt: 'Melee and ranged fighting around a ritual in a cavern.' },
+  { src: '/assets/screenshots/04-cavern-break-the-ritual.png', alt: 'Breaking the ritual in an objective room deep in the caverns.' },
+  { src: '/assets/screenshots/05-skeleton-king-last-monarch.png', alt: 'Skeleton King boss fight, opening phase: The Last Monarch.' },
+  { src: '/assets/screenshots/06-skeleton-king-dead-court.png', alt: 'Skeleton King second phase: The Dead Court.' },
+  { src: '/assets/screenshots/07-skeleton-king-broken-crown.png', alt: 'Close-range climax against the Skeleton King: Broken Crown.' },
+]
 
 const page = ref(null)
 const rat = ref(null)
@@ -22,7 +32,7 @@ const { leftACoin } = useRat(rat)
       <section id="top" class="hero">
         <div class="rs-wrap">
           <p class="rs-eyebrow" data-reveal>Independent studio</p>
-          <h1 data-reveal data-reveal-delay="90">Games built by hand.</h1>
+          <h1 data-reveal data-reveal-delay="90">Death keeps the score.</h1>
           <p class="lede" data-reveal data-reveal-delay="180">
             Ratslayer Games is a small independent studio. Two projects in
             progress — one of them announced.
@@ -63,11 +73,11 @@ const { leftACoin } = useRat(rat)
           <figure class="art" data-reveal data-reveal-delay="140">
             <div class="art-frame">
               <img
-                :src="keyArtWide"
-                width="920"
-                height="430"
+                :src="keyArt"
+                width="1232"
+                height="706"
                 decoding="async"
-                alt="Dungeons &amp; Death key art: four heroes facing an armoured Black Knight in a torchlit dungeon."
+                alt="Dungeons &amp; Death key art: Warrior, Wizard, Rogue and Monk facing the armoured Black Knight in a torchlit dungeon."
               />
               <div class="art-fade" aria-hidden="true"></div>
             </div>
@@ -77,37 +87,51 @@ const { leftACoin } = useRat(rat)
           <div class="rs-wrap">
             <dl class="facts" data-reveal>
               <div><dt class="rs-eyebrow">Players</dt><dd>1–4, plus Director</dd></div>
-              <div><dt class="rs-eyebrow">Genre</dt><dd>Action roguelite</dd></div>
+              <div><dt class="rs-eyebrow">Genre</dt><dd>Co-op action roguelite</dd></div>
               <div><dt class="rs-eyebrow">Platform</dt><dd>PC</dd></div>
               <div><dt class="rs-eyebrow">Release</dt><dd>To be announced</dd></div>
             </dl>
 
             <div class="pillars" data-reveal>
               <div>
-                <h4 class="rs-eyebrow">Alone or together</h4>
-                <p>Run the dungeon solo, or bring up to three others. The layout shifts every attempt.</p>
+                <h4 class="rs-eyebrow">Four heroes</h4>
+                <p>Warrior, Wizard, Rogue or Monk — defend, cast, ambush or fight hand-to-hand, each with its own skill tree. Solo, or online with up to four.</p>
               </div>
               <div>
                 <h4 class="rs-eyebrow">The Director</h4>
-                <p>A fifth player plays against you — placing encounters, offering bargains, commanding the Black Knight.</p>
+                <p>A fifth player plays against you — spending a limited budget on reinforcements, traps, events and dangerous bargains.</p>
+              </div>
+              <div>
+                <h4 class="rs-eyebrow">Become the Black Knight</h4>
+                <p>At the right moment the Director enters the dungeon in person — a playable rival with a full combat kit.</p>
               </div>
               <div>
                 <h4 class="rs-eyebrow">Death marks you</h4>
-                <p>Dying is not a reset. What it costs you stays with the run that follows.</p>
+                <p>Fallen heroes are remembered in the Hall of the Fallen. The next adventurer carries on without them.</p>
               </div>
             </div>
 
-            <!-- REPLACE: swap each slot for a real screenshot / trailer embed. -->
             <div class="media" data-reveal>
               <div class="media-head">
                 <h4 class="rs-eyebrow">Media</h4>
-                <span class="rs-eyebrow faint">Placeholders</span>
+                <span class="rs-eyebrow faint">Private beta</span>
               </div>
-              <div class="slots">
-                <div class="slot">Trailer</div>
-                <div class="slot">Screenshot 01</div>
-                <div class="slot">Screenshot 02</div>
-              </div>
+              <video
+                class="trailer"
+                controls
+                preload="none"
+                poster="/assets/trailer-poster.webp"
+                src="/assets/dnd-trailer.mp4"
+                width="1920"
+                height="1080"
+              >
+                Your browser does not support embedded video.
+              </video>
+              <ul class="shots">
+                <li v-for="shot in screenshots" :key="shot.src">
+                  <img :src="shot.src" :alt="shot.alt" width="1920" height="1080" loading="lazy" decoding="async" />
+                </li>
+              </ul>
             </div>
 
             <!-- REPLACE: becomes <a class="pill" href="STEAM_URL"> once the page is live. -->
@@ -143,9 +167,9 @@ const { leftACoin } = useRat(rat)
             <h2 class="rs-eyebrow">Studio</h2>
           </div>
           <div class="studio-grid">
-            <p class="statement" data-reveal>Every system, sprite and sound is made in-house.</p>
+            <p class="statement" data-reveal>Nothing ships until it feels right in the hands.</p>
             <div class="studio-copy" data-reveal data-reveal-delay="90">
-              <p>We are a small independent studio. We work slowly, on purpose — nothing ships until it feels right in the hands.</p>
+              <p>We are a small independent studio. We work slowly, on purpose — chasing combat with real weight, decisions that matter and deaths that leave a mark.</p>
               <p>Dungeons &amp; Death is what we are building now. The second project stays quiet until it can speak for itself.</p>
             </div>
           </div>
@@ -288,7 +312,7 @@ const { leftACoin } = useRat(rat)
 
 .pillars {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: clamp(28px, 4vw, 48px);
   margin-top: clamp(48px, 7vw, 88px);
 }
@@ -297,19 +321,28 @@ const { leftACoin } = useRat(rat)
 
 .media { margin-top: clamp(56px, 8vw, 104px); }
 .media-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
-.slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
-.slot {
+.trailer {
+  display: block;
+  width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   border: 1px solid var(--rs-line);
-  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.022) 0 8px, transparent 8px 16px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--rs-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--rs-text-25);
+  background: #000;
+}
+.shots {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rs-line);
+  background: var(--rs-surface);
 }
 
 .pill {
