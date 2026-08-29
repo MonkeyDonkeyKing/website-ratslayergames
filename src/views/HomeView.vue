@@ -5,6 +5,13 @@ import { useReveal } from '../composables/useReveal'
 import { useRat } from '../composables/useRat'
 const keyArt = '/assets/dnd-main-capsule.png'
 
+const STEAM_URL_HERO =
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=hero'
+const STEAM_URL_REPEAT =
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=repeat_cta'
+const STEAM_URL_FOOTER =
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=footer'
+
 const screenshots = [
   { src: '/assets/screenshots/01-road-hold-the-ground.png', alt: 'The party holds the ground against attackers on a torchlit road.' },
   { src: '/assets/screenshots/02-forest-cultist-ambush.png', alt: 'A cultist ambush in the forest, projectiles crossing the clearing.' },
@@ -31,14 +38,18 @@ const { leftACoin } = useRat(rat)
       <!-- Hero -->
       <section id="top" class="hero">
         <div class="rs-wrap">
-          <p class="rs-eyebrow" data-reveal>Independent studio</p>
-          <h1 data-reveal data-reveal-delay="90">Death keeps the score.</h1>
+          <p class="rs-eyebrow" data-reveal>DUNGEONS &amp; DEATH</p>
+          <h1 data-reveal data-reveal-delay="90">Fight alone or with friends. Your road ends at the Black Knight.</h1>
           <p class="lede" data-reveal data-reveal-delay="180">
-            Ratslayer Games is a small independent studio. Two projects in
-            progress — one of them announced.
+            A top-down dark-fantasy action roguelite for solo play and online
+            co-op with up to four heroes. Build a roster that can die for
+            good, uncover hidden paths, and work toward The Final Oath. An
+            optional fifth player can take the Director's seat and make the
+            dungeon fight back.
           </p>
-          <div data-reveal data-reveal-delay="260">
-            <a class="btn" href="#games">See the games</a>
+          <div class="cta-row" data-reveal data-reveal-delay="260">
+            <a class="btn" :href="STEAM_URL_HERO" target="_blank" rel="noopener">WISHLIST ON STEAM</a>
+            <a class="btn btn-secondary" href="#gameplay">WATCH GAMEPLAY</a>
           </div>
         </div>
         <div class="cue" aria-hidden="true"></div>
@@ -49,25 +60,17 @@ const { leftACoin } = useRat(rat)
         <div class="rs-wrap">
           <div class="rule" data-reveal>
             <h2 class="rs-eyebrow">Games</h2>
-            <span class="rs-eyebrow">Two</span>
           </div>
         </div>
 
-        <!-- Project I — Dungeons & Death -->
+        <!-- Dungeons & Death -->
         <article class="project">
           <div class="rs-wrap">
             <div class="status" data-reveal>
               <span class="dot live" aria-hidden="true"></span>
               <span class="rs-eyebrow live-t">In development</span>
-              <span class="rs-eyebrow faint">Project I</span>
             </div>
             <h3 data-reveal data-reveal-delay="60">Dungeons &amp; Death</h3>
-            <p class="body-lg" data-reveal data-reveal-delay="120">
-              Brave shifting dark-fantasy dungeons alone or with up to four
-              heroes — or let a fifth player become the hostile Director,
-              shaping encounters, bargains and a Black Knight rival. An action
-              roguelite where death leaves a permanent mark.
-            </p>
           </div>
 
           <figure class="art" data-reveal data-reveal-delay="140">
@@ -94,26 +97,26 @@ const { leftACoin } = useRat(rat)
 
             <div class="pillars" data-reveal>
               <div>
-                <h4 class="rs-eyebrow">Four heroes</h4>
-                <p>Warrior, Wizard, Rogue or Monk — defend, cast, ambush or fight hand-to-hand, each with its own skill tree. Solo, or online with up to four.</p>
+                <h4 class="rs-eyebrow">FIGHT YOUR WAY</h4>
+                <p>Block, parry, charge, grapple and build class skills across quick, standard or long expeditions.</p>
               </div>
               <div>
-                <h4 class="rs-eyebrow">The Director</h4>
-                <p>A fifth player plays against you — spending a limited budget on reinforcements, traps, events and dangerous bargains.</p>
+                <h4 class="rs-eyebrow">KEEP THE SURVIVORS</h4>
+                <p>Build a persistent roster in the tavern. Fallen heroes are remembered. A retired hero is gone for good.</p>
               </div>
               <div>
-                <h4 class="rs-eyebrow">Become the Black Knight</h4>
-                <p>At the right moment the Director enters the dungeon in person — a playable rival with a full combat kit.</p>
+                <h4 class="rs-eyebrow">FIND THE ROAD</h4>
+                <p>Routes, events and hidden paths can change the expedition. Some doors only appear when you find them.</p>
               </div>
               <div>
-                <h4 class="rs-eyebrow">Death marks you</h4>
-                <p>Fallen heroes are remembered in the Hall of the Fallen. The next adventurer carries on without them.</p>
+                <h4 class="rs-eyebrow">LET THE DUNGEON FIGHT BACK</h4>
+                <p>An optional fifth player can spend limited resources against the party, possess enemies and enter the field as the Black Knight.</p>
               </div>
             </div>
 
-            <div class="media" data-reveal>
+            <div id="gameplay" class="media" data-reveal>
               <div class="media-head">
-                <h4 class="rs-eyebrow">Media</h4>
+                <h4 class="rs-eyebrow">Gameplay</h4>
                 <span class="rs-eyebrow faint">Private beta</span>
               </div>
               <video
@@ -134,43 +137,25 @@ const { leftACoin } = useRat(rat)
               </ul>
             </div>
 
-            <!-- REPLACE: becomes <a class="pill" href="STEAM_URL"> once the page is live. -->
-            <p class="pill" data-reveal>
+            <a class="pill" :href="STEAM_URL_REPEAT" target="_blank" rel="noopener" data-reveal>
               <span class="dot live" aria-hidden="true"></span>
-              Steam page coming soon
-            </p>
-          </div>
-        </article>
-
-        <!-- Project II — unannounced -->
-        <article class="project second">
-          <div class="rs-wrap">
-            <div class="status" data-reveal>
-              <span class="dot" aria-hidden="true"></span>
-              <span class="rs-eyebrow">Unannounced</span>
-              <span class="rs-eyebrow faint">Project II</span>
-            </div>
-            <div class="redacted" data-reveal data-reveal-delay="80">
-              <div class="scan" aria-hidden="true"></div>
-              <div class="bar" aria-hidden="true"></div>
-            </div>
-            <p class="rs-eyebrow wide" data-reveal data-reveal-delay="140">Redacted</p>
-            <p class="body-sm" data-reveal data-reveal-delay="180">Not yet. It will be worth the wait.</p>
+              WISHLIST ON STEAM
+            </a>
           </div>
         </article>
       </section>
 
-      <!-- Studio -->
+      <!-- About -->
       <section id="studio">
         <div class="rs-wrap">
           <div class="rule" data-reveal>
-            <h2 class="rs-eyebrow">Studio</h2>
+            <h2 class="rs-eyebrow">About</h2>
           </div>
           <div class="studio-grid">
-            <p class="statement" data-reveal>Nothing ships until it feels right in the hands.</p>
+            <p class="statement" data-reveal>ONE GAME. ONE DEVELOPER.</p>
             <div class="studio-copy" data-reveal data-reveal-delay="90">
-              <p>We are a small independent studio. We work slowly, on purpose — chasing combat with real weight, decisions that matter and deaths that leave a mark.</p>
-              <p>Dungeons &amp; Death is what we are building now. The second project stays quiet until it can speak for itself.</p>
+              <p>Dungeons &amp; Death is currently made by one independent developer under the RatSlayerGames name. I post the current build, the systems I am changing and the parts that still need work.</p>
+              <p>RatSlayerGames is a publishing name, not a claim that a larger studio is behind the game.</p>
             </div>
           </div>
         </div>
@@ -182,8 +167,9 @@ const { leftACoin } = useRat(rat)
             Ratslayer Games
             <span v-if="leftACoin" class="coin" title="Something left this behind." aria-hidden="true"></span>
           </div>
+          <p class="foot-line rs-eyebrow">Dungeons &amp; Death is coming soon on Steam.</p>
           <div class="foot-meta rs-eyebrow">
-            <span>Steam soon</span>
+            <a :href="STEAM_URL_FOOTER" target="_blank" rel="noopener">Steam</a>
             <span>© {{ new Date().getFullYear() }}</span>
           </div>
         </div>
@@ -219,18 +205,31 @@ const { leftACoin } = useRat(rat)
   max-width: 30em;
   text-wrap: pretty;
 }
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(14px, 2.4vw, 22px);
+  margin-top: clamp(40px, 7vw, 72px);
+}
 .btn {
   display: inline-flex;
   align-items: center;
-  margin-top: clamp(40px, 7vw, 72px);
   padding: 14px 24px;
   border-radius: 999px;
   background: var(--rs-text);
   color: #000;
   font-size: 14px;
-  transition: transform 300ms var(--rs-ease), background 300ms ease;
+  letter-spacing: 0.04em;
+  transition: transform 300ms var(--rs-ease), background 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 .btn:hover { transform: translateY(-2px); background: #fff; color: #000; }
+.btn-secondary {
+  background: transparent;
+  color: var(--rs-text);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.06); color: var(--rs-text); border-color: rgba(255, 255, 255, 0.4); }
 .cue {
   position: absolute;
   bottom: 32px;
@@ -254,7 +253,6 @@ const { leftACoin } = useRat(rat)
 .rule h2 { font-weight: 400; }
 
 .project { padding-top: clamp(48px, 8vw, 96px); }
-.project.second { padding-top: clamp(72px, 12vw, 168px); }
 .project h3 {
   font-size: clamp(34px, 6.4vw, 72px);
   line-height: 1;
@@ -266,15 +264,6 @@ const { leftACoin } = useRat(rat)
 .dot.live { background: var(--rs-accent); }
 .live-t { color: var(--rs-accent); }
 .faint { color: var(--rs-text-25); }
-
-.body-lg {
-  margin-top: clamp(20px, 3vw, 28px);
-  font-size: clamp(16px, 1.9vw, 20px);
-  color: var(--rs-text-60);
-  max-width: 44em;
-  text-wrap: pretty;
-}
-.body-sm { margin-top: 14px; font-size: 15px; color: rgba(242, 241, 238, 0.5); max-width: 34em; }
 
 .art { margin-top: clamp(40px, 6vw, 72px); }
 .art-frame {
@@ -355,33 +344,9 @@ const { leftACoin } = useRat(rat)
   border: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 13px;
   color: rgba(242, 241, 238, 0.7);
+  transition: border-color 250ms ease, color 250ms ease;
 }
-
-.redacted {
-  position: relative;
-  aspect-ratio: 21 / 8;
-  min-height: 200px;
-  overflow: hidden;
-  border: 1px solid var(--rs-line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(120% 140% at 50% 20%, #101010, #060606 55%, #000);
-}
-.redacted .scan {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0 2px, transparent 2px 6px);
-  opacity: 0.7;
-}
-.redacted .bar {
-  position: relative;
-  width: min(58%, 420px);
-  height: clamp(34px, 5.5vw, 58px);
-  background: #000;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-.wide { margin-top: 18px; letter-spacing: 0.28em; }
+.pill:hover { border-color: rgba(255, 255, 255, 0.32); color: var(--rs-text); }
 
 .studio-grid {
   display: grid;
@@ -394,9 +359,16 @@ const { leftACoin } = useRat(rat)
 .studio-copy p { color: rgba(242, 241, 238, 0.58); line-height: 1.7; text-wrap: pretty; }
 
 footer { margin-top: clamp(96px, 14vw, 200px); border-top: 1px solid var(--rs-line); }
-.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; padding-top: 36px; padding-bottom: 44px; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 20px; padding-top: 36px; padding-bottom: 44px; }
 .foot-mark { display: flex; align-items: center; gap: 12px; color: rgba(242, 241, 238, 0.42); }
+.foot-line { color: var(--rs-text-25); order: 3; flex-basis: 100%; }
 .foot-meta { display: flex; align-items: center; gap: 24px; color: var(--rs-text-25); }
+.foot-meta a { transition: color 250ms ease; }
+.foot-meta a:hover { color: var(--rs-text); }
+
+@media (min-width: 720px) {
+  .foot-line { order: 0; flex-basis: auto; }
+}
 .coin {
   width: 9px;
   height: 9px;

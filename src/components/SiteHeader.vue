@@ -1,6 +1,9 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
+const STEAM_URL =
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=nav'
+
 const scrolled = ref(false)
 const menuOpen = ref(false)
 
@@ -32,8 +35,8 @@ onBeforeUnmount(() => {
       <div class="right">
         <div class="links">
           <a href="#games">Games</a>
-          <a href="#studio">Studio</a>
-          <span class="soon">Steam soon</span>
+          <a href="#studio">About</a>
+          <a class="soon" :href="STEAM_URL" target="_blank" rel="noopener">Wishlist on Steam</a>
         </div>
 
         <button
@@ -53,8 +56,8 @@ onBeforeUnmount(() => {
 
   <div v-if="menuOpen" id="rs-menu" class="sheet">
     <a href="#games" @click="menuOpen = false">Games</a>
-    <a href="#studio" @click="menuOpen = false">Studio</a>
-    <p class="rs-eyebrow">Steam page coming soon</p>
+    <a href="#studio" @click="menuOpen = false">About</a>
+    <a class="rs-eyebrow" :href="STEAM_URL" target="_blank" rel="noopener" @click="menuOpen = false">Wishlist on Steam</a>
   </div>
 </template>
 
@@ -92,7 +95,8 @@ onBeforeUnmount(() => {
 .links { display: flex; align-items: center; gap: clamp(20px, 3vw, 36px); }
 .links a { font-size: 13px; color: var(--rs-text-60); transition: color 250ms ease; }
 .links a:hover { color: var(--rs-text); }
-.soon { font-family: var(--rs-mono); font-size: 12px; color: var(--rs-text-25); }
+.soon { font-family: var(--rs-mono); font-size: 12px; color: var(--rs-text-25); transition: color 250ms ease; }
+.soon:hover { color: var(--rs-accent); }
 
 .burger {
   display: none;
