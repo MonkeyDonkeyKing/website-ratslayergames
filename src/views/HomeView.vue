@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import SiteHeader from '../components/SiteHeader.vue'
+import Lightbox from '../components/ScreenshotLightbox.vue'
 import { useReveal } from '../composables/useReveal'
 import { useRat } from '../composables/useRat'
 const keyArt = '/assets/dnd-main-capsule.png'
@@ -12,18 +13,23 @@ const STEAM_URL_REPEAT =
 const STEAM_URL_FOOTER =
   'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=footer'
 
+const YOUTUBE_URL = 'https://www.youtube.com/@ratslayergames'
+const TIKTOK_URL = 'https://www.tiktok.com/@ratslayergames'
+const INSTAGRAM_URL = 'https://www.instagram.com/ratslayergames'
+
 const screenshots = [
-  { src: '/assets/screenshots/01-road-hold-the-ground.png', alt: 'The party holds the ground against attackers on a torchlit road.' },
-  { src: '/assets/screenshots/02-forest-cultist-ambush.png', alt: 'A cultist ambush in the forest, projectiles crossing the clearing.' },
-  { src: '/assets/screenshots/03-cavern-ritual-fight.png', alt: 'Melee and ranged fighting around a ritual in a cavern.' },
-  { src: '/assets/screenshots/04-cavern-break-the-ritual.png', alt: 'Breaking the ritual in an objective room deep in the caverns.' },
-  { src: '/assets/screenshots/05-skeleton-king-last-monarch.png', alt: 'Skeleton King boss fight, opening phase: The Last Monarch.' },
-  { src: '/assets/screenshots/06-skeleton-king-dead-court.png', alt: 'Skeleton King second phase: The Dead Court.' },
-  { src: '/assets/screenshots/07-skeleton-king-broken-crown.png', alt: 'Close-range climax against the Skeleton King: Broken Crown.' },
+  { src: '/assets/screenshots/01-broodguardian-reveal.png', alt: 'Brood Guardian boss title card revealing the new cave biome.' },
+  { src: '/assets/screenshots/02-broodguardian-exchange.png', alt: 'Mid-fight exchange against the Brood Guardian in the cave biome.' },
+  { src: '/assets/screenshots/03-ratking-plaguecourt.png', alt: 'Rat King boss fight, Plague Court phase, in a toxic dungeon biome.' },
+  { src: '/assets/screenshots/04-oldroad-swarm.png', alt: 'Dense multi-enemy combat on the Old Road with the momentum bar filling.' },
+  { src: '/assets/screenshots/05-grapple-pull-combo.png', alt: 'Grapple hook pulling a group of enemies together at full momentum.' },
+  { src: '/assets/screenshots/06-tavern-coop.png', alt: 'Two co-op heroes, Rogue host and Warrior teammate, together in the tavern.' },
+  { src: '/assets/screenshots/07-journey-ahead-map.png', alt: 'The Journey Ahead route map with a run boon prompt.' },
 ]
 
 const page = ref(null)
 const rat = ref(null)
+const lightboxIndex = ref(null)
 
 useReveal(page)
 const { leftACoin } = useRat(rat)
@@ -131,11 +137,20 @@ const { leftACoin } = useRat(rat)
                 Your browser does not support embedded video.
               </video>
               <ul class="shots">
-                <li v-for="shot in screenshots" :key="shot.src">
-                  <img :src="shot.src" :alt="shot.alt" width="1920" height="1080" loading="lazy" decoding="async" />
+                <li v-for="(shot, i) in screenshots" :key="shot.src">
+                  <button
+                    type="button"
+                    class="shot-btn"
+                    :aria-label="`Enlarge screenshot: ${shot.alt}`"
+                    @click="lightboxIndex = i"
+                  >
+                    <img :src="shot.src" :alt="shot.alt" width="1920" height="1080" loading="lazy" decoding="async" />
+                  </button>
                 </li>
               </ul>
             </div>
+
+            <Lightbox :items="screenshots" v-model:index="lightboxIndex" />
 
             <a class="pill" :href="STEAM_URL_REPEAT" target="_blank" rel="noopener" data-reveal>
               <span class="dot live" aria-hidden="true"></span>
@@ -170,6 +185,9 @@ const { leftACoin } = useRat(rat)
           <p class="foot-line rs-eyebrow">Dungeons &amp; Death is coming soon on Steam.</p>
           <div class="foot-meta rs-eyebrow">
             <a :href="STEAM_URL_FOOTER" target="_blank" rel="noopener">Steam</a>
+            <a :href="YOUTUBE_URL" target="_blank" rel="noopener">YouTube</a>
+            <a :href="TIKTOK_URL" target="_blank" rel="noopener">TikTok</a>
+            <a :href="INSTAGRAM_URL" target="_blank" rel="noopener">Instagram</a>
             <span>© {{ new Date().getFullYear() }}</span>
           </div>
         </div>
@@ -332,6 +350,19 @@ const { leftACoin } = useRat(rat)
   height: auto;
   border: 1px solid var(--rs-line);
   background: var(--rs-surface);
+  transition: transform 400ms var(--rs-ease);
+}
+.shot-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.shot-btn:hover img,
+.shot-btn:focus-visible img {
+  transform: scale(1.03);
 }
 
 .pill {
@@ -393,7 +424,7 @@ footer { margin-top: clamp(96px, 14vw, 200px); border-top: 1px solid var(--rs-li
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .art-frame img, .rat { transition: none; }
-  .art-frame:hover img { transform: none; }
+  .btn, .art-frame img, .shots img, .rat { transition: none; }
+  .art-frame:hover img, .shot-btn:hover img, .shot-btn:focus-visible img { transform: none; }
 }
 </style>
