@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const STEAM_URL =
-  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=nav'
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=release&utm_content=nav'
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
@@ -36,7 +36,7 @@ onBeforeUnmount(() => {
         <div class="links">
           <a href="#games">Games</a>
           <a href="#studio">About</a>
-          <a class="soon" :href="STEAM_URL" target="_blank" rel="noopener">Wishlist on Steam</a>
+          <a class="soon" :href="STEAM_URL" target="_blank" rel="noopener">Buy on Steam</a>
         </div>
 
         <button
@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
   <div v-if="menuOpen" id="rs-menu" class="sheet">
     <a href="#games" @click="menuOpen = false">Games</a>
     <a href="#studio" @click="menuOpen = false">About</a>
-    <a class="rs-eyebrow" :href="STEAM_URL" target="_blank" rel="noopener" @click="menuOpen = false">Wishlist on Steam</a>
+    <a class="rs-eyebrow" :href="STEAM_URL" target="_blank" rel="noopener" @click="menuOpen = false">Buy on Steam</a>
   </div>
 </template>
 

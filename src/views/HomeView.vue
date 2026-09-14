@@ -7,24 +7,27 @@ import { useRat } from '../composables/useRat'
 const keyArt = '/assets/dnd-main-capsule.png'
 
 const STEAM_URL_HERO =
-  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=hero'
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=release&utm_content=hero'
 const STEAM_URL_REPEAT =
-  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=repeat_cta'
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=release&utm_content=repeat_cta'
 const STEAM_URL_FOOTER =
-  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=coming_soon&utm_content=footer'
+  'https://store.steampowered.com/app/5085640/?utm_source=website&utm_medium=owned&utm_campaign=release&utm_content=footer'
 
 const YOUTUBE_URL = 'https://www.youtube.com/@ratslayergames'
 const TIKTOK_URL = 'https://www.tiktok.com/@ratslayergames'
 const INSTAGRAM_URL = 'https://www.instagram.com/ratslayergames'
 
 const screenshots = [
-  { src: '/assets/screenshots/01-broodguardian-reveal.png', alt: 'Brood Guardian boss title card revealing the new cave biome.' },
-  { src: '/assets/screenshots/02-broodguardian-exchange.png', alt: 'Mid-fight exchange against the Brood Guardian in the cave biome.' },
-  { src: '/assets/screenshots/03-ratking-plaguecourt.png', alt: 'Rat King boss fight, Plague Court phase, in a toxic dungeon biome.' },
-  { src: '/assets/screenshots/04-oldroad-swarm.png', alt: 'Dense multi-enemy combat on the Old Road with the momentum bar filling.' },
-  { src: '/assets/screenshots/05-grapple-pull-combo.png', alt: 'Grapple hook pulling a group of enemies together at full momentum.' },
-  { src: '/assets/screenshots/06-tavern-coop.png', alt: 'Two co-op heroes, Rogue host and Warrior teammate, together in the tavern.' },
-  { src: '/assets/screenshots/07-journey-ahead-map.png', alt: 'The Journey Ahead route map with a run boon prompt.' },
+  { src: '/assets/screenshots/01-verdant-march-coop-brawl.png', alt: 'Two-player co-op brawl in the Verdant March forest, Monk burst combo landing on a pack of enemies.' },
+  { src: '/assets/screenshots/02-monk-lightning-spiral.png', alt: 'The Monk unleashes a giant lightning spiral in the Hollow Deep cave.' },
+  { src: '/assets/screenshots/03-brood-guardian-hollow-deep.png', alt: 'Brood Guardian boss arena with both heroes wreathed in flame auras.' },
+  { src: '/assets/screenshots/04-rat-king-betrayal-two-bosses.png', alt: 'Sewer fight against the Ogre Lord after the Rat King ally turns on the player, two boss bars on screen.' },
+  { src: '/assets/screenshots/05-skeleton-king-throne-room.png', alt: 'Skeleton King throne room with a skull telegraph closing in.' },
+  { src: '/assets/screenshots/06-red-dragon-furnace-heart.png', alt: 'Red Dragon fire breath in the volcanic biome, Furnace Guard phase.' },
+  { src: '/assets/screenshots/07-director-reinforcements-swarm.png', alt: 'The Director floods the cave with a swarm as the Warrior hits Level 16 with a burst combo.' },
+  { src: '/assets/screenshots/08-journey-ahead-map.png', alt: 'The Journey Ahead overview map with a Crypt stage selected and four of six nodes cleared.' },
+  { src: '/assets/screenshots/09-astral-oath-skill-tree.png', alt: 'Warrior Astral Oath skill tree with Cleave at Tier 3 and its path details.' },
+  { src: '/assets/screenshots/10-director-mode-reinforcements.png', alt: 'Director mode from the Director seat: dragging an Armored Ogre into the arena with the Reinforcements and Traps panel.' },
 ]
 
 const page = ref(null)
@@ -54,7 +57,7 @@ const { leftACoin } = useRat(rat)
             dungeon fight back.
           </p>
           <div class="cta-row" data-reveal data-reveal-delay="260">
-            <a class="btn" :href="STEAM_URL_HERO" target="_blank" rel="noopener">WISHLIST ON STEAM</a>
+            <a class="btn" :href="STEAM_URL_HERO" target="_blank" rel="noopener">GET IT ON STEAM</a>
             <a class="btn btn-secondary" href="#gameplay">WATCH GAMEPLAY</a>
           </div>
         </div>
@@ -98,7 +101,7 @@ const { leftACoin } = useRat(rat)
               <div><dt class="rs-eyebrow">Players</dt><dd>1–4, plus Director</dd></div>
               <div><dt class="rs-eyebrow">Genre</dt><dd>Co-op action roguelite</dd></div>
               <div><dt class="rs-eyebrow">Platform</dt><dd>PC</dd></div>
-              <div><dt class="rs-eyebrow">Release</dt><dd>To be announced</dd></div>
+              <div><dt class="rs-eyebrow">Release</dt><dd>Out now — September 14, 2026</dd></div>
             </dl>
 
             <div class="pillars" data-reveal>
@@ -123,7 +126,7 @@ const { leftACoin } = useRat(rat)
             <div id="gameplay" class="media" data-reveal>
               <div class="media-head">
                 <h4 class="rs-eyebrow">Gameplay</h4>
-                <span class="rs-eyebrow faint">Private beta</span>
+                <span class="rs-eyebrow faint">Release trailer</span>
               </div>
               <video
                 class="trailer"
@@ -154,7 +157,7 @@ const { leftACoin } = useRat(rat)
 
             <a class="pill" :href="STEAM_URL_REPEAT" target="_blank" rel="noopener" data-reveal>
               <span class="dot live" aria-hidden="true"></span>
-              WISHLIST ON STEAM
+              OUT NOW ON STEAM
             </a>
           </div>
         </article>
@@ -182,7 +185,7 @@ const { leftACoin } = useRat(rat)
             Ratslayer Games
             <span v-if="leftACoin" class="coin" title="Something left this behind." aria-hidden="true"></span>
           </div>
-          <p class="foot-line rs-eyebrow">Dungeons &amp; Death is coming soon on Steam.</p>
+          <p class="foot-line rs-eyebrow">Dungeons &amp; Death is out now on Steam.</p>
           <div class="foot-meta rs-eyebrow">
             <a :href="STEAM_URL_FOOTER" target="_blank" rel="noopener">Steam</a>
             <a :href="YOUTUBE_URL" target="_blank" rel="noopener">YouTube</a>
